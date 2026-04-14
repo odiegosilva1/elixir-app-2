@@ -4,7 +4,6 @@
 
 - Elixir >= 1.14
 - Erlang/OTP
-- PostgreSQL (banco de dados)
 
 ## Instalação
 
@@ -13,23 +12,7 @@
    mix setup
    ```
 
-2. **Configurar o banco de dados:**
-   
-   Edite `config/dev.exs` e ajuste as credenciais do PostgreSQL:
-   ```elixir
-   config :elixir_app, ElixirApp.Repo,
-     username: "postgres",
-     password: "postgres",
-     hostname: "localhost",
-     database: "elixir_app_dev"
-   ```
-
-3. **Criar o banco de dados:**
-   ```bash
-   mix ecto.create
-   ```
-
-4. **Rodar migrations (opcional):**
+2. **Rodar migrations (se houver):**
    ```bash
    mix ecto.migrate
    ```
@@ -48,15 +31,29 @@ iex -S mix phx.server
 
 Acesse em [`localhost:4000`](http://localhost:4000)
 
+## Banco de dados
+
+Este projeto usa **SQLite** (não requer instalação de servidor).
+
+Arquivos do banco:
+- Desenvolvimento: `ecto_sqlite_elixir_app_dev.db`
+- Teste: `ecto_sqlite_elixir_app_test.db`
+
+Para resetar o banco de dados:
+```bash
+rm ecto_sqlite_elixir_app_dev.db
+mix ecto.migrate
+```
+
 ## Comandos úteis
 
 | Comando | Descrição |
 |---------|-----------|
 | `mix phx.server` | Iniciar servidor |
-| `mix ecto.create` | Criar banco de dados |
 | `mix ecto.migrate` | Executar migrations |
 | `mix test` | Rodar testes |
 | `mix phx.gen.live` | Gerar LiveView |
+| `mix assets.build` | Compilar assets (JS/CSS) |
 
 ## Learn more
 

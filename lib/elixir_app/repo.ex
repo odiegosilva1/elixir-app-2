@@ -1,5 +1,5 @@
 defmodule ElixirApp.Repo do
   use Ecto.Repo,
     otp_app: :elixir_app,
-    adapter: Ecto.Adapters.Postgres
+    adapter: Ecto.Adapters.SQLite3
 end
